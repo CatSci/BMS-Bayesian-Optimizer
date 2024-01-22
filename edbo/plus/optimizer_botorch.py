@@ -1,5 +1,5 @@
 # EDBO plus through only BOTorch functions.
-
+import streamlit as st
 
 import torch
 import numpy as np
@@ -87,6 +87,7 @@ class EDBOplus:
         return df
 
     def run(self,
+            data_frame,
             objectives, objective_mode, objective_thresholds=None,
             directory='.', filename='reaction.csv',
             columns_features='all',
@@ -165,7 +166,9 @@ class EDBOplus:
         """
 
         wdir = Path(directory)
-        csv_filename = wdir.joinpath(filename)
+        # csv_filename = wdir.joinpath(filename)
+        csv_filename = data_frame
+        # st.data_editor(csv_filename)
         torch.manual_seed(seed=seed)
         np.random.seed(seed)
         self.acquisition_sampler = acquisition_function_sampler
@@ -188,11 +191,12 @@ class EDBOplus:
             objective_mode = [objective_mode]
 
         # Check that the user's scope exists.
-        msg = "Scope was not found. Please create an scope (csv file)."
-        assert os.path.exists(csv_filename), msg
+        # msg = "Scope was not found. Please create an scope (csv file)."
+        # assert os.path.exists(csv_filename), msg
 
         # 2. Load reaction.
-        df = pd.read_csv(f"{csv_filename}")
+        # df = pd.read_csv(f"{csv_filename}")
+        df = csv_filename
         df = df.dropna(axis='columns', how='all')
         original_df = df.copy(deep=True)  # Make a copy of the original data.
 
@@ -230,7 +234,7 @@ class EDBOplus:
             # Sort values and save dataframe.
             original_df = original_df.sort_values('priority', ascending=False)
             original_df = original_df.loc[:,~original_df.columns.str.contains('^Unnamed')]
-            original_df.to_csv(csv_filename, index=False)
+            # original_df.to_csv(csv_filename, index=False)
             return original_df
 
         # 3. Separate train and test data.
@@ -313,7 +317,7 @@ class EDBOplus:
         # Drop predictions, uncertainties and EI.
         original_df = original_df.drop(columns=cols_for_preds, axis='columns')
         original_df = original_df.sort_values(cols_sort, ascending=False)
-        original_df.to_csv(csv_filename, index=False)
+        # original_df.to_csv(csv_filename, index=False)
 
         return original_df
 

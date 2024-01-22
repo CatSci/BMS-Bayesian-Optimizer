@@ -81,7 +81,7 @@ def create_reaction_scope(components, directory='./', filename='reaction.csv',
         scope = [dict(zip(keys, combination)) for combination in
                  itertools.product(*values)]
         df_scope = pd.DataFrame(scope)
-        df_scope.to_csv(csv_filename, index=False, mode='w',
-                        header=list(keys))
+        # df_scope.to_csv(csv_filename, index=False, mode='w',
+        #                 header=list(keys))
 
     return df_scope
