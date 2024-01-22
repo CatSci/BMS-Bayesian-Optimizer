@@ -7,6 +7,8 @@ WebApp: https://www.edbowebapp.com
 
 **Reference:** Garrido Torres, Jose A.; Lau, Sii Hong; Anchuri, Pranay; Stevens, Jason M.; Tabora, Jose E.; Li, Jun; Borovika, Alina; Adams, Ryan P.; Doyle, Abigail G. "A Multi-Objective Active Learning Platform and Web App for Reaction Optimization".
 
+** https://github.com/doyle-lab-ucla/edboplus**
+
 **DOI:** 
 
 10.26434/chemrxiv-2022-cljcp
@@ -18,42 +20,4 @@ WebApp: https://www.edbowebapp.com
 [JACS](https://pubs.acs.org/doi/full/10.1021/jacs.2c08592)
 
 
-<br>
-
----
-
-<br>
-
-### Installation:
-
-<br>
-
-(1) Create anaconda environment:
-
-```
-conda create --name edbo_env python=3.8
-```
-
-(2) Activate conda environment:
-
-```
-conda activate edbo_env
-```
-
-(3) Install EDBO+ dependencies:
-
-```
-pip install -e .
-```
-
-<br>
-
----
-
-<br>
-
-#### **Note**: to run the notebook tutorials install JupyterLab
-
-```
-conda install jupyterlab
 ```
