@@ -80,7 +80,7 @@ def main():
         batch_size = st.number_input(f"Batch Size:", min_value=1, value=1)
         if isinstance(variables_list, pd.DataFrame):
             if st.checkbox('1st time'):
-                objective_name = st.text_input(f"Variable name:")
+                objective_name = st.text_input(f"Objective Name:")
                 objective_maxmin = st.text_input(f"Maximize or Minimize:")
             else:
                 objective_name = st.multiselect(
